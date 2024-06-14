@@ -10,3 +10,4 @@
 
 - Seamless compression of images.
 - Easy compression of PDF files.
+- 1 Click resizing of MP4 Files.
