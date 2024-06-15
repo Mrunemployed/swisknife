@@ -72,8 +72,7 @@ Use JavaScript to read the file contents and handle the upload process. Instead 
 ## Backend (Flask Application)
 ##### Receive and Process File Implement a Flask route (/process_file in this example) to receive the file data, process it (e.g., compress it), and return the processed data.
 
-```
-python
+```python
 Copy code
 from flask import Flask, request, send_file
 import io
