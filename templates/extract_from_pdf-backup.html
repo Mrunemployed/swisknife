@@ -1,0 +1,56 @@
+{%extends "draw-template.html"%}
+{%block content%}
+
+
+<style>
+    #selectorContainer {
+        position: relative;
+        width: 800px;
+        height: 600px;
+        border: 1px solid #ccc;
+    }
+    #canvas {
+        position: relative;
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+    }
+</style>
+<div id="pdfcontainer">
+
+    <div id="selectorContainer">
+        <iframe id="pdframe" src="{{url_for('render',filepath=pdf)}}" frameborder="0" width="100%" height="100%" style="position: absolute;"></iframe>
+        <canvas id="canvas" width="800" height="600"></canvas>
+    </div>
+    <div class="flex-column">
+        <button class="btn btn-bd-primary" onclick="previouspage()">previous</button>
+        <button class="btn btn-bd-primary" onclick="nextpage()">next</button>
+    </div>
+</div>
+
+<script src="static/js/draw.js"></script>
+<script>
+
+    const frame = document.getElementById('pdframe');
+    let currpage=1;
+
+    function nextpage(){
+        currpage++;
+        load(currpage)
+    }
+
+    function load(page){
+        pdframe.src = "{{url_for('render',filepath=pdf)}}"+`?page=${page}`
+    }
+
+    function previouspage(){
+        currpage--;
+        if (currpage<1){
+            currpage = 1;
+        }
+        load(currpage)
+    }
+
+</script>
+
+{%endblock%}

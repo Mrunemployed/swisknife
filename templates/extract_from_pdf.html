@@ -1,0 +1,116 @@
+{%extends "draw-template.html"%}
+{%block content%}
+
+
+<style>
+
+#pdfcontainer {
+    width: 100%;
+    margin-top: 5rem;
+    max-width: 100%;
+    height: auto;
+    justify-content: center;
+    /* align-items: center;
+    align-content: center; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+#selectorContainer {
+    display: flex;
+    position: relative;
+    align-self: center;
+    overflow: hidden;
+        /* border: 1px solid #ccc; */
+}
+
+#extraction {
+    border: 1px solid #ccc;
+    display: flex;
+    display: block;
+    box-sizing: border-box;
+    padding: 2em;
+}
+
+img {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    padding: 5%;
+    
+}
+
+.parsedData{
+    font-size: small;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: 5%;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+.btn{
+    top: 0;
+    
+}
+.collapse{
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+.collapse.show{
+    display: flex;
+    max-height: auto;
+}
+</style>
+<div id="pdfcontainer" class="flex-column">
+
+    <div id="selectorContainer">
+    <!-- <div class="flexitem"> -->
+        <!-- <iframe id="pdframe" src="{{url_for('render')}}" width="100%" height="100%" style="position: absolute;"></iframe> -->
+        <img id="pdframe" src="{{url_for('render')}}" alt="rendered image">
+        <canvas id="canvas"></canvas>
+    </div>
+    <div class="btn">
+        <button class="btn btn-bd-primary" id="previouspage" >previous</button>
+        <button class="btn btn-bd-primary" id="nextpage" >next</button>
+    </div>
+</div>
+
+<div class="" id="extraction" style="text-align: left;">
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <button class="btn btn-bd-primary" id="startExt" aria-expanded="true" aria-controls="expand-collapseOne">
+                    Start Extracting
+                </button>
+            </div>
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body" id="data">
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</div>
+
+
+
+
+
+
+
+</div>
+
+<script src="{{url_for('static',filename='draw.js')}}"></script>
+<script src="{{url_for('static',filename='render-pdf.js')}}"></script>
+
+{%endblock%}

@@ -1,0 +1,20 @@
+{%extends "base_template.html"%}
+{%block content%}
+
+
+{%if error%}
+<div class="alert alert-danger">{{error}}</div>
+{%elif message%}
+<div class="alert alert-success mt-5 mb-3">{{message}}</div>
+{%else%}
+<p></p>
+{%endif%}
+
+
+<form action="{{url_for('upload_handler')}}" method="post" enctype="multipart/form-data">
+
+    <input type="file" name="fileup"/>
+    <input type="submit" value="next" class="btn btn-bd-primary">
+</form>
+
+{%endblock%}
